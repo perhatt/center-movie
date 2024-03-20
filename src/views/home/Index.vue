@@ -1,6 +1,5 @@
 <script setup>
   import Banner from "@/components/Banner.vue";
-  import BannerDemo from "@/components/BannerDemo.vue";
   import List from "@/components/List.vue";
   import { ref } from "vue";
   const imgList = ref([

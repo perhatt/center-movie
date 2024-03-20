@@ -16,7 +16,7 @@
 
 <template>
   <div
-    class="w-fit h-full flex flex-col items-end pt-1 gap-1 px-1 relative bg-[rgb(44,45,47)] rounded-r-2xl"
+    class="w-fit h-full flex flex-col items-end pt-10 gap-1 px-1 relative bg-[rgb(44,45,47)] rounded-r-2xl"
   >
     <router-link
       :to="item.path"
@@ -30,7 +30,7 @@
     <div class="right_after"></div>
   </div>
 </template>
-<style>
+<style lang="scss" scoped>
   .right_after {
     position: absolute;
     right: -2px;

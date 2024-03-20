@@ -1,12 +1,15 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
+const { MoveRight } = require("lucide-vue-next");
 const path = require("path");
 
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
-    width: 1000,
-    height: 800,
+    width: 900,
+    height: 700,
     frame: false,
-    center: true,
+    // center: true,
+    x:1000,
+    y:200,
     webPreferences: {
       preload: path.resolve(__dirname, "../preload/index.js"),
       webSecurity: false,
