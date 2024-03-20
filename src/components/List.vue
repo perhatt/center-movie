@@ -6,11 +6,11 @@ const props = defineProps({
 
 <template>
   <div
-    class="w-56 h-72 rounded-xl relative overflow-hidden group cursor-pointer"
+    class="w-56 h-80 rounded-xl relative group cursor-pointer overflow-hidden"
   >
     <img :src="props.list.cover" class="w-full h-full rounded-xl" alt="" />
     <div
-      class="absolute top-64 lef-0 w-full h-40 bg-black/50 backdrop-blur-sm group-hover:top-32 transition-all duration-100 ease-out text-white flex flex-col px-2"
+      class="absolute top-72 lef-0 w-full h-36 bg-black/50 backdrop-blur-sm group-hover:top-44 transition-all duration-100 ease-out text-white flex flex-col px-2"
     >
       <p class="w-full truncate flex-wrap text-md leading-8 hover:underline">
         {{ props.list.title }}
@@ -24,7 +24,7 @@ const props = defineProps({
           {{ i }}
         </div>
       </div>
-      <p class="w-full line-clamp-4 overflow-hidden text-xs">
+      <p class="w-full line-clamp-3 overflow-hidden text-xs">
         {{ props.list.introduce }}
       </p>
     </div>
