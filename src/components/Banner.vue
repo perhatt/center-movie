@@ -43,23 +43,23 @@
   >
     <!-- left btn -->
     <div
-      class="absolute left-0 top-0 h-full w-2/6 bg-gradient-to-l from-transparent to-[#111214] flex items-center z-50"
+      class="absolute left-0 top-0 h-full w-2/3 bg-gradient-to-l from-transparent to-[var(--bg-color)] flex items-center z-50"
     >
       <Button @click="Prev" icon="ChevronLeft" class="ml-2"></Button>
     </div>
     <!-- right btn -->
     <div
-      class="absolute right-0 top-0 h-full w-2/6 bg-gradient-to-r from-transparent to-[#111214] flex items-center justify-end z-50"
+      class="absolute right-0 top-0 h-full w-2/6 bg-gradient-to-r from-transparent to-[var(--bg-color)] flex items-center justify-end z-50"
     >
       <Button @click="Next" icon="ChevronRight" class="mr-2"></Button>
     </div>
     <!-- 指示灯 -->
     <div
-      class="w-full h-24 absolute right-0 bottom-0 flex items-end pb-4 justify-center gap-1 z-50 bg-gradient-to-b from-transparent to-[#111214]"
+      class="w-full h-24 absolute right-0 bottom-0 flex items-end pb-4 justify-center gap-1 z-50 bg-gradient-to-b from-transparent to-[var(--bg-color)]"
     >
       <div
         @click="instFun(index)"
-        :class="currentIndex == index ? 'w-6 bg-fuchsia-300' : ' bg-white/40'"
+        :class="currentIndex == index ? 'w-6 bg-[var(--main-color)]' : ' bg-white/40'"
         class="size-3 rounded-full duration-100 ease-out cursor-pointer"
         v-for="(item, index) in imgList"
         :key="index"

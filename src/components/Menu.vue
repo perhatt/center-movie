@@ -16,12 +16,12 @@ const menu = ref([
 
 <template>
   <div
-    class="w-fit h-full flex flex-col items-end pt-10 gap-1 px-1 relative bg-[rgb(44,45,47)] rounded-r-2xl"
+    class="w-fit h-full flex flex-col items-end pt-10 gap-1 px-2 relative  rounded-r-2xl"
   >
     <router-link
       :to="item.path"
       active-class="active_class"
-      class="size-14 rounded-2xl flex flex-col items-center justify-center duration-100 router_class select-none"
+      class="size-12 rounded-full flex flex-col items-center justify-center  router_class select-none"
       v-for="(item, index) in menu"
       :key="index"
     >
@@ -30,21 +30,12 @@ const menu = ref([
   </div>
 </template>
 <style lang="scss" scoped>
-.right_after {
-  position: absolute;
-  right: -2px;
-  width: 2px;
-  height: 100%;
-  background-image: linear-gradient(to bottom, transparent, #333, transparent);
-}
 .router_class {
   color: #58595a;
   cursor: pointer;
 }
 .active_class {
-  border-spacing: 0.25rem 0.25rem;
-  background-color: rgba(255, 255, 255, 0.1);
+  background-color: var(--main-color);
   color: #fff;
-  border: solid 3px #343436;
 }
 </style>

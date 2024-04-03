@@ -13,9 +13,10 @@ const closeApp = () => {
 </script>
 <template>
   <div
-    class="w-full h-12 flex items-center gap-2 px-2  absolute top-0 z-50 bg-black/20 backdrop-blur-sm"
+    class="w-full h-12 flex items-center gap-2 px-2  absolute top-0 z-50 "
   >
-    <Button class="w-16 h-9" icon="ChevronLeft" lebal="返回" @click="this.$router.go(-1)"> </Button>
+    <Button  icon="ChevronLeft"  @click="this.$router.go(-1)"> </Button>
+    <Button  icon="ChevronRight"  @click="this.$router.go(-1)"> </Button>
     <div class="flex-1 h-12 flex items-center flex-row-reverse gap-1">
       <!-- app控制 最小化关闭 -->
         <Button icon="X" @click="closeApp"></Button>

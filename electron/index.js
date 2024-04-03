@@ -7,9 +7,7 @@ const createWindow = () => {
     width: 900,
     height: 700,
     frame: false,
-    // center: true,
-    x:1000,
-    y:200,
+    center: true,
     webPreferences: {
       preload: path.resolve(__dirname, "../preload/index.js"),
       webSecurity: false,
