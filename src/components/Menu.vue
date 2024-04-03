@@ -21,7 +21,7 @@ const menu = ref([
     <router-link
       :to="item.path"
       active-class="active_class"
-      class="size-12 rounded-full flex flex-col items-center justify-center  router_class select-none"
+      class="size-12 rounded-full  text-[var(--main-color)]  router_class select-none ripple-button flex items-center justify-center"
       v-for="(item, index) in menu"
       :key="index"
     >
@@ -30,12 +30,8 @@ const menu = ref([
   </div>
 </template>
 <style lang="scss" scoped>
-.router_class {
-  color: #58595a;
-  cursor: pointer;
-}
-.active_class {
-  background-color: var(--main-color);
-  color: #fff;
+.active_class{
+  background-color:rgba(#fdaa7d,0.1);
+  color: var(--main-color);
 }
 </style>

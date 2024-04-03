@@ -58,7 +58,7 @@ const list = ref([
 </script>
 <template>
   <Banner :imgList="imgList"></Banner>
-  <div class="flex justify-around gap-2 w-full flex-wrap p-10">
+  <div class="flex justify-around gap-2 w-full flex-wrap p-10" v-for="i in 10" :key="i">
     <div v-for="i in list" :key="i">
       <list :list="i" />
     </div>

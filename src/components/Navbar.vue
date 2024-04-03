@@ -1,6 +1,6 @@
 <script setup>
-import Button from "./Button.vue";
 import Search from "./Search.vue";
+import Button from "./Button.vue";
 const minimize = () => {
   ipcRenderer.send("minimize");
 };
@@ -10,10 +10,14 @@ const toggleFullScreen = () => {
 const closeApp = () => {
   ipcRenderer.send("close-app");
 };
+const props = defineProps({
+  opacity: String,
+});
 </script>
 <template>
   <div
-    class="w-full h-12 flex items-center gap-2 px-2  absolute top-0 z-50 "
+    class="w-full h-12 flex items-center gap-2 px-2  absolute top-0 z-50"
+    :style="`background-color:rgba(28,24,20,${props.opacity});`"
   >
     <Button  icon="ChevronLeft"  @click="this.$router.go(-1)"> </Button>
     <Button  icon="ChevronRight"  @click="this.$router.go(-1)"> </Button>
@@ -33,6 +37,7 @@ const closeApp = () => {
 <style>
 .drag {
   -webkit-app-region: drag;
+  
 }
 .logo {
   height: 6em;
