@@ -24,13 +24,15 @@ const list = ref({
       "https://www.hdsay.net/Files/2014-08/1e523522313148f3b17e517484d7b242.jpg",
     introduce:
       "这部电影是一个扣人心弦的恐怖故事，讲述了一群人在恐怖之夜的遭遇。",
-    lebal: "高清",
+    lebal: "VIP",
   });
+  import {useMovieDetails} from '@/store/dialog.js'
+  const DetailsDialog = useMovieDetails()
 </script>
 <template>
   <Banner :imgList="imgList"></Banner>
   <div class="flex justify-around gap-5 w-full flex-wrap p-10">
-    <list v-for="i in 12" :list="list" :key="i" />
+    <list v-for="i in 12" :list="list" :key="i" @click="DetailsDialog.isDetailsDialog=true" />
   </div>
 
   <!-- 加载更多 -->
