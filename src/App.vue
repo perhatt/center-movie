@@ -9,7 +9,7 @@
   const handleScroll = (e) => {  
     scrollPosition.value = e.srcElement.scrollTop
     const maxScrollOpacity = 1; 
-    const maxScroll = 500; 
+    const maxScroll = 800; 
     const value = Math.min(scrollPosition.value / maxScroll, maxScrollOpacity);
     opacity.value = Number(value.toFixed(2))
   };   
@@ -21,7 +21,7 @@
   >
     <Menu></Menu>
     <div class="flex-1 h-full flex flex-col relative">
-      <Navbar :opacity="opacity"></Navbar>
+      <Navbar :style="`background-color:rgba(28,24,20,${opacity});`"></Navbar>
       <div class="w-full h-full overflow-y-scroll relative" @scroll="handleScroll($event)">
         <router-view></router-view>
         <Dialog></Dialog>

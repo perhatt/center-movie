@@ -10,14 +10,11 @@ const toggleFullScreen = () => {
 const closeApp = () => {
   ipcRenderer.send("close-app");
 };
-const props = defineProps({
-  opacity: String,
-});
+
 </script>
 <template>
   <div
-    class="w-full h-12 flex items-center gap-2 px-2  absolute top-0 z-50"
-    :style="`background-color:rgba(28,24,20,${props.opacity});`"
+    class="w-full h-12 flex items-center gap-2 px-2  absolute top-0 z-50" 
   >
     <Button  icon="ChevronLeft"  @click="this.$router.go(-1)"> </Button>
     <Button  icon="ChevronRight"  @click="this.$router.go(-1)"> </Button>

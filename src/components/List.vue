@@ -30,7 +30,7 @@ const props = defineProps({
     </div>
     <div
       v-if="props.list.lebal.length"
-      class="absolute top-0 right-0 w-fit bg-red-500 px-2 py-1 text-xs text-white rounded-bl"
+      class="absolute top-1 left-1 w-fit bg-[var(--main-color)] px-2 py-1 text-xs text-white rounded-lg"
     >
       {{ props.list.lebal }}
     </div>
