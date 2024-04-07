@@ -1,5 +1,4 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
-const { MoveRight } = require("lucide-vue-next");
 const path = require("path");
 
 const createWindow = () => {

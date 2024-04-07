@@ -1,11 +1,11 @@
 <script setup>
-const props = defineProps({
-  icon: {
-    type: String,
-    required: true,
-  },
-  lebal: String,
-});
+  const props = defineProps({
+    icon: {
+      type: String,
+      required: true,
+    },
+    lebal: String,
+  });
 </script>
 <template>
   <div
@@ -13,8 +13,8 @@ const props = defineProps({
   >
     <Icon
       :name="icon"
-      size="20"
-      stroke-width="3"
+      :size="20"
+      :stroke-width="3"
       class="text-[#58595A] group-hover:text-white group-hover:font-bold"
     ></Icon>
     <span class="font-bold text-sm text-[#58595A] group-hover:text-white">{{

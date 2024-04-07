@@ -1,7 +1,7 @@
 <script setup>
-const props = defineProps({
-  list: String,
-});
+  const props = defineProps({
+    list: Object,
+  });
 </script>
 
 <template>
