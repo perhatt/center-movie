@@ -1,6 +1,7 @@
 const { app, BrowserWindow, ipcMain } = require("electron");
 const path = require("path");
 
+let baseurl = "http://www.localhost:5173/#/";
 const createWindow = () => {
   const mainWindow = new BrowserWindow({
     width: 900,
@@ -17,7 +18,7 @@ const createWindow = () => {
   });
 
   //   mainWindow.loadFile("dist/index.html");
-  mainWindow.loadURL("http://www.localhost:5173");
+  mainWindow.loadURL(baseurl);
   //默认开开发者工具
   // mainWindow.webContents.openDevTools();
   ipcMain.on("minimize", () => {
@@ -42,14 +43,41 @@ app.on("window-all-closed", function () {
     app.quit();
   }
 });
-
 app.on("activate", function () {
   // 在macOS上，当单击dock图标并且没有其他窗口打开时，重新创建一个窗口
   if (mainWindow === null) {
     createWindow();
   }
 });
-
 ipcMain.on("close-app", () => {
   app.quit();
+});
+
+// 播放页面创建
+let videoWindow = null;
+const createVideoWindow = (url) => {
+  videoWindow = new BrowserWindow({
+    width: 900,
+    height: 700,
+    frame: false,
+    center: true,
+    webPreferences: {
+      preload: path.resolve(__dirname, "../preload/index.js"),
+      webSecurity: false,
+      nodeIntegration: true,
+      enableRemoteModule: true,
+      contextIsolation: false,
+    },
+  });
+};
+ipcMain.on("play-video", (event, i) => {
+  const url = baseurl + "play?id=" + i;
+  console.log(process.env.url);
+  if (videoWindow === null) {
+    createVideoWindow(url);
+    videoWindow.loadURL(url);
+  } else {
+    // 如果 videoWindow 不为 null，则直接加载新的 URL
+    videoWindow.loadURL(url);
+  }
 });

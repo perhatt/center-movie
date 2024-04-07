@@ -29,10 +29,11 @@
     lebal: "VIP",
   });
   const goToPlayer = (i) => {
-    router.push({
-      name: "play",
-      query: { id: i },
-    });
+    window.ipcRenderer.send("play-video", i);
+    // router.push({
+    //   name: "play",
+    //   query: { id: i },
+    // });
   };
 </script>
 <template>
