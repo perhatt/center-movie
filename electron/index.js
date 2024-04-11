@@ -1,4 +1,4 @@
-const { app, BrowserWindow, ipcMain } = require("electron");
+const { app, BrowserWindow, ipcMain, ipcRenderer } = require("electron");
 const path = require("path");
 
 let baseurl = "http://www.localhost:5173/#/";
@@ -17,7 +17,7 @@ const createWindow = () => {
     },
   });
 
-  //   mainWindow.loadFile("dist/index.html");
+  // mainWindow.loadFile("dist/index.html");
   mainWindow.loadURL(baseurl);
   //默认开开发者工具
   // mainWindow.webContents.openDevTools();
@@ -35,7 +35,6 @@ const createWindow = () => {
 };
 
 app.on("ready", createWindow);
-
 // 当所有窗口都被关闭后退出
 app.on("window-all-closed", function () {
   // 在macOS上，除非用户用Cmd + Q明确退出，否则应用与菜单栏一直保持活跃
@@ -57,8 +56,8 @@ ipcMain.on("close-app", () => {
 let videoWindow = null;
 const createVideoWindow = (url) => {
   videoWindow = new BrowserWindow({
-    width: 900,
-    height: 700,
+    width: 800,
+    height: 550,
     frame: false,
     center: true,
     webPreferences: {
@@ -69,15 +68,34 @@ const createVideoWindow = (url) => {
       contextIsolation: false,
     },
   });
+  videoWindow.webContents.openDevTools();
 };
-ipcMain.on("play-video", (event, i) => {
-  const url = baseurl + "play?id=" + i;
-  console.log(process.env.url);
+ipcMain.on("play-video", (event, id) => {
+  const url = baseurl + "play?id=" + id;
   if (videoWindow === null) {
-    createVideoWindow(url);
+    createVideoWindow();
     videoWindow.loadURL(url);
   } else {
     // 如果 videoWindow 不为 null，则直接加载新的 URL
     videoWindow.loadURL(url);
+    //显示videowindow
+    videoWindow.show();
   }
+});
+
+ipcMain.on("video-minimize", () => {
+  videoWindow.minimize();
+});
+
+ipcMain.on("video-maximize", () => {
+  if (videoWindow.isMaximized()) {
+    videoWindow.unmaximize();
+  } else {
+    videoWindow.maximize();
+  }
+});
+
+ipcMain.on("close-video-window", () => {
+  videoWindow && videoWindow.close();
+  videoWindow = null;
 });

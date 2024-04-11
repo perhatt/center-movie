@@ -1,8 +1,14 @@
-<script>
-  document.title = "播放器";
+<script setup>
+  import PlayNavbar from "@/components/PlayNavbar.vue";
+  import VideoPlayer from "@/components/VideoPlayer.vue";
 </script>
 <template>
-  <div class="p-2">
-    <h2 class="drag">id:{{ this.$route.query.id }}</h2>
+  <div class="flex flex-col w-full h-screen fixed">
+    <PlayNavbar name="最豪赘婿：龙王殿" class="z-50" />
+    <div class="w-full flex-1">
+      <VideoPlayer
+        url="http://play.akax.cn/play?vid=wxv_1783130407513751560"
+      ></VideoPlayer>
+    </div>
   </div>
 </template>
