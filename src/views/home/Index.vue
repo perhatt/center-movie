@@ -30,10 +30,6 @@
   });
   const goToPlayer = (i) => {
     window.ipcRenderer.send("play-video", i);
-    // router.push({
-    //   name: "play",
-    //   query: { id: i },
-    // });
   };
 </script>
 <template>

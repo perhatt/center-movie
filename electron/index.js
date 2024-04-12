@@ -99,3 +99,6 @@ ipcMain.on("close-video-window", () => {
   videoWindow && videoWindow.close();
   videoWindow = null;
 });
+ipcMain.on("video-window-show", () => {
+  videoWindow.show();
+});
