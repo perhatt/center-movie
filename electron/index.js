@@ -1,9 +1,12 @@
 const { app, BrowserWindow, ipcMain, ipcRenderer } = require("electron");
 const path = require("path");
 
+
+// 主窗口创建
 let baseurl = "http://www.localhost:5173/#/";
+let mainWindow = null;
 const createWindow = () => {
-  const mainWindow = new BrowserWindow({
+  mainWindow = new BrowserWindow({
     width: 900,
     height: 700,
     frame: false,
@@ -16,34 +19,31 @@ const createWindow = () => {
       contextIsolation: false,
     },
   });
-
-  // mainWindow.loadFile("dist/index.html");
-  mainWindow.loadURL(baseurl);
-  //默认开开发者工具
+  mainWindow.loadURL(baseurl)
   // mainWindow.webContents.openDevTools();
-  ipcMain.on("minimize", () => {
-    mainWindow.minimize();
-  });
 
-  ipcMain.on("maximize-window", () => {
-    if (mainWindow.isMaximized()) {
-      mainWindow.unmaximize();
-    } else {
-      mainWindow.maximize();
-    }
-  });
 };
+ipcMain.on("minimize", () => {
+  mainWindow.minimize();
+});
+ipcMain.on("maximize-window", () => {
+  if (mainWindow.isMaximized()) {
+    mainWindow.unmaximize();
+  } else {
+    mainWindow.maximize();
+  }
+});
 
+
+
+// app 启动事件
 app.on("ready", createWindow);
-// 当所有窗口都被关闭后退出
 app.on("window-all-closed", function () {
-  // 在macOS上，除非用户用Cmd + Q明确退出，否则应用与菜单栏一直保持活跃
   if (process.platform !== "darwin") {
     app.quit();
   }
 });
 app.on("activate", function () {
-  // 在macOS上，当单击dock图标并且没有其他窗口打开时，重新创建一个窗口
   if (mainWindow === null) {
     createWindow();
   }
@@ -51,6 +51,7 @@ app.on("activate", function () {
 ipcMain.on("close-app", () => {
   app.quit();
 });
+
 
 // 播放页面创建
 let videoWindow = null;
@@ -60,6 +61,8 @@ const createVideoWindow = (url) => {
     height: 550,
     frame: false,
     center: true,
+    parent: mainWindow,
+    modal: true,
     webPreferences: {
       preload: path.resolve(__dirname, "../preload/index.js"),
       webSecurity: false,
@@ -68,7 +71,7 @@ const createVideoWindow = (url) => {
       contextIsolation: false,
     },
   });
-  videoWindow.webContents.openDevTools();
+  // videoWindow.webContents.openDevTools();
 };
 ipcMain.on("play-video", (event, id) => {
   const url = baseurl + "play?id=" + id;
@@ -76,9 +79,7 @@ ipcMain.on("play-video", (event, id) => {
     createVideoWindow();
     videoWindow.loadURL(url);
   } else {
-    // 如果 videoWindow 不为 null，则直接加载新的 URL
     videoWindow.loadURL(url);
-    //显示videowindow
     videoWindow.show();
   }
 });
@@ -102,3 +103,40 @@ ipcMain.on("close-video-window", () => {
 ipcMain.on("video-window-show", () => {
   videoWindow.show();
 });
+
+
+// login页面创建
+let loginWindow = null;
+const createLoginWindow = () => {
+  loginWindow = new BrowserWindow({
+    width: 300,
+    height: 400,
+    frame: false,
+    center: true,
+    parent: mainWindow,
+    //禁止缩放
+    resizable: false,
+    modal: true,
+    webPreferences: {
+      preload: path.resolve(__dirname, "../preload/index.js"),
+      webSecurity: false,
+      nodeIntegration: true,
+      enableRemoteModule: true,
+      contextIsolation: false,
+    },
+  });
+  loginWindow.webContents.openDevTools();
+}
+ipcMain.on("open-login-window", () => {
+  if (loginWindow === null) {
+    createLoginWindow();
+    loginWindow.loadURL(baseurl + "login");
+  } else {
+    loginWindow.loadURL(baseurl + "login");
+    loginWindow.show();
+  }
+})
+ipcMain.on("close-login-window", () => {
+  loginWindow && loginWindow.close();
+  loginWindow = null;
+})

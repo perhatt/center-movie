@@ -1,9 +1,6 @@
 <script setup>
   import { ref, onMounted, onBeforeUnmount, onUnmounted } from "vue";
-  import Button from "./Button.vue";
-  const videoSource = ref(
-    "https://svideo.qpic.cn//0bf2tqaaaaaa64apvvzrinpfbhgdacoaaaaa.f10003.mp4?dis_k=80f13dae109e7553932795f834fe21ac&dis_t=1712917493&play_scene=10600&auth_info=BfvqiLgWQmgdsOPyuRArThESMGUcODkzSG0pRGdDT3o7GUZHcSM=&auth_key=cfc0c03572feb8575635ad7610fc3d24",
-  );
+  const videoSource = ref("https://www.w3school.com.cn/i/movie.mp4");
   const playing = ref(false);
   const currentTime = ref("00:00");
   const duration = ref("00:00");
@@ -203,18 +200,18 @@
     id="video"
     ref="fullscreenElement"
   >
-    <div class="flex flex-1 items-center justify-center relative">
+    <div class="w-full h-full items-center justify-center absolute top-0 left-0 ">
       <video
         ref="videoPlayer"
         :src="videoSource"
         @loadedmetadata="onLoadedMetadata"
         @ended="onEnded"
-        class="-mt-6 h-full w-full object-contain"
+        class=" h-full w-full object-contain"
       ></video>
     </div>
     <div
       :class="isControl ? '-bottom-0' : ' -bottom-11'"
-      class="absolute left-0 justify-between items-center text-white w-full h-12 flex flex-col duration-75 bg-[var(--bg-color)] select-none"
+      class="absolute left-0 justify-between items-center text-white w-full h-12 flex flex-col duration-75 bg-[var(--bg-color)] select-none z-50"
     >
       <div
         id="progressId"

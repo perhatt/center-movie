@@ -32,6 +32,11 @@ const router = createRouter({
       name: "play",
       component: () => import("@/views/play/Index.vue"),
     },
+    {
+      path:"/login",
+      name:"login",
+      component:() => import("@/views/login/Index.vue")
+    }
   ],
 });
 

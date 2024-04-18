@@ -27,9 +27,3 @@
     </router-link>
   </div>
 </template>
-<style lang="scss" scoped>
-  .active_class {
-    background-color: rgba(#fdaa7d, 0.1);
-    color: var(--main-color);
-  }
-</style>

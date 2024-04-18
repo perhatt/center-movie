@@ -1,6 +1,5 @@
-const { ipcRenderer, isElectron } = require("electron");
+const { ipcRenderer } = require("electron");
 function int() {
   window.ipcRenderer = ipcRenderer;
-  window.Electron = isElectron;
 }
 int();

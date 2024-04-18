@@ -1,5 +1,5 @@
 <script setup>
-  import Banner from "@/components/Banner.vue";
+  import Banner from "@/components/main/Banner.vue";
   import Button from "@/components/Button.vue";
   import List from "@/components/List.vue";
   import { ref } from "vue";

@@ -1,6 +1,6 @@
 <script setup>
-  import Search from "./Search.vue";
-  import Button from "./Button.vue";
+  import Search from "../Search.vue";
+  import Button from "../Button.vue";
   const minimize = () => {
     ipcRenderer.send("minimize");
   };

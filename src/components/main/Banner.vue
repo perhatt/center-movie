@@ -1,6 +1,6 @@
 <script setup>
   import { onMounted, ref } from "vue";
-  import Button from "./Button.vue";
+  import Button from "../Button.vue";
   const currentIndex = ref(0);
   const loadig = ref(true);
   const props = defineProps(["imgList"]);

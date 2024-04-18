@@ -1,6 +1,6 @@
 <script setup>
-  import Menu from "@/components/Menu.vue";
-  import Navbar from "@/components/Navbar.vue";
+  import Menu from "@/components/main/Menu.vue";
+  import Navbar from "@/components/main/Nav.vue";
   import { ref } from "vue";
   const scrollPosition = ref(0);
   const opacity = ref();
