@@ -9,7 +9,6 @@
     },
     size: Number,
     color: String,
-    strokeWidth: Number,
     defaultClass: String,
   });
 
@@ -22,7 +21,7 @@
     :is="icon"
     :size="size"
     :color="color"
-    :stroke-width="strokeWidth"
+    :stroke-width="2.5"
     :default-class="defaultClass"
   />
 </template>

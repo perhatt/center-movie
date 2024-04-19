@@ -35,7 +35,19 @@ const router = createRouter({
     {
       path:"/login",
       name:"login",
-      component:() => import("@/views/login/Index.vue")
+      component:() => import("@/views/login/Index.vue"),
+      redirect:"/login/wechat",
+      children:[
+        {
+          path:"/login/wechat",
+          name:"wechat",
+          component:() => import("@/views/login/Wechat.vue"),
+        },{
+          path:"/login/phone",
+          name:"phone",
+          component:() => import("@/views/login/Phone.vue"),
+        }
+      ]
     }
   ],
 });

@@ -11,14 +11,15 @@
   border-radius: 10px;
 }
 ::-webkit-scrollbar-thumb {
-  background-color: #77777796;
   border-radius: 10px;
 }
-
-.drag {
+ 
+.drag { 
   -webkit-app-region: drag;
 }
-
+ .no-drag{
+  -webkit-app-region: none;
+ }
 .scrool-none {
   display: none;
   --webkit-scrollbar: none;

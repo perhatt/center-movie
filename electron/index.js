@@ -109,7 +109,7 @@ ipcMain.on("video-window-show", () => {
 let loginWindow = null;
 const createLoginWindow = () => {
   loginWindow = new BrowserWindow({
-    width: 300,
+    width: 350,
     height: 400,
     frame: false,
     center: true,
@@ -117,6 +117,9 @@ const createLoginWindow = () => {
     //禁止缩放
     resizable: false,
     modal: true,
+    //背景透明
+    backgroundColor: "transparent",
+    roundedCorners:10,
     webPreferences: {
       preload: path.resolve(__dirname, "../preload/index.js"),
       webSecurity: false,
@@ -130,11 +133,11 @@ const createLoginWindow = () => {
 ipcMain.on("open-login-window", () => {
   if (loginWindow === null) {
     createLoginWindow();
-    loginWindow.loadURL(baseurl + "login");
+    //最小化mainwindow
   } else {
-    loginWindow.loadURL(baseurl + "login");
     loginWindow.show();
   }
+  loginWindow.loadURL(baseurl + "login");
 })
 ipcMain.on("close-login-window", () => {
   loginWindow && loginWindow.close();
