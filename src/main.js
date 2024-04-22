@@ -6,7 +6,7 @@ import { createApp } from "vue";
 
 // Style
 import "./style.css";
-
+import 'ant-design-vue/dist/reset.css';
 // Mount
 const app = createApp(App);
 registerPlugins(app);

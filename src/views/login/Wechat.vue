@@ -1,36 +1,30 @@
 <script setup>
+import { QRCode } from "ant-design-vue";
 import { ref } from "vue";
-const isLoading = ref(true);
-// 2s 后把isloading 设置为true
-setTimeout(() => {
-  isLoading.value = false;
-}, 2000);
+const status = ref("expired");
+const refresh = () => {
+  status.value = "loading";
+  setTimeout(() => {
+    status.value = "active";
+  }, 2000);
+};
+const qrCodeValue = "http://www.antdv.com";
 </script>
 <template>
-  <div
-    class="w-full h-screen flex flex-col items-center bg-[#292929] select-none"
-  >
+  <div class="w-full h-screen flex flex-col items-center select-none">
     <div class="size-60 relative">
-      <img class="size-60 absolute" src="@/assets/code.svg" alt="" srcset="" />
-
-      <!-- loading -->
-      <div
-        class="absolute w-full h-full bg-[#292929] flex items-center justify-center"
-        v-if="isLoading"
-      >
-        <div class="lds-roller">
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+      <div class="size-60 absolute flex items-center justify-center">
+        <QRCode
+          :size="220"
+          :bordered="false"
+          :value="qrCodeValue"
+          :status="status"
+          type="svg"
+          @refresh="refresh"
+        />
       </div>
     </div>
-    <div class="text-center text-xl text-white">微信安全扫码登录</div>
+    <div class="text-center text-xl text-black">微信安全扫码登录</div>
   </div>
 </template>
 <style>
@@ -59,7 +53,7 @@ setTimeout(() => {
   width: 7.2px;
   height: 7.2px;
   border-radius: 50%;
-  background: white;
+  background: black;
   margin: -3.6px 0 0 -3.6px;
 }
 

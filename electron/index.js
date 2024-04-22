@@ -7,10 +7,11 @@ let baseurl = "http://www.localhost:5173/#/";
 let mainWindow = null;
 const createWindow = () => {
   mainWindow = new BrowserWindow({
-    width: 900,
+    width: 890,
     height: 700,
     frame: false,
     center: true,
+    resizable: false,
     webPreferences: {
       preload: path.resolve(__dirname, "../preload/index.js"),
       webSecurity: false,
@@ -20,7 +21,8 @@ const createWindow = () => {
     },
   });
   mainWindow.loadURL(baseurl)
-  // mainWindow.webContents.openDevTools();
+  // mainWindow.loadFile("dist/index.html");
+  mainWindow.webContents.openDevTools();
 
 };
 ipcMain.on("minimize", () => {
@@ -61,8 +63,6 @@ const createVideoWindow = (url) => {
     height: 550,
     frame: false,
     center: true,
-    parent: mainWindow,
-    modal: true,
     webPreferences: {
       preload: path.resolve(__dirname, "../preload/index.js"),
       webSecurity: false,

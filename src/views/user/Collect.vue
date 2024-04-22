@@ -1,3 +1,3 @@
 <template>
-  <div>Register</div>
+  <div>collect</div>
 </template>

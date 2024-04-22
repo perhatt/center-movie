@@ -1,17 +1,17 @@
 <script setup>
-  import { ref } from "vue";
-  const menu = ref([
-    {
-      icon: "UserRound",
-      lebal: "用户",
-      path: "/user",
-    },
-    {
-      icon: "Home",
-      lebal: "首页",
-      path: "/home",
-    },
-  ]);
+import { ref } from "vue";
+const menu = ref([
+  {
+    icon: "UserRound",
+    lebal: "我的",
+    path: "/user",
+  },
+  {
+    icon: "Home",
+    lebal: "首页",
+    path: "/home",
+  },
+]);
 </script>
 
 <template>

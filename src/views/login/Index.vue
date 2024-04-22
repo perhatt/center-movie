@@ -8,8 +8,8 @@ const closeWindow = () => {
 };
 const routerPath = ref(0);
 const switchingLoginMode = () => {
-  if (route.path == "/login/wechat") {
-    router.push("/login/phone");
+  if (route.path === "/login/wechat") {
+    router.push("/login/account");
     routerPath.value = 1;
   } else {
     router.push("/login/wechat");
@@ -18,12 +18,12 @@ const switchingLoginMode = () => {
 };
 </script>
 <template>
-  <div class="relative w-full h-screen bg-[#292929]">
+  <div class="relative w-full h-screen bg-white">
     <div class="w-full h-20 flex">
       <div class="flex-1 h-full drag flex items-center">
         <div
           @click="switchingLoginMode"
-          class="size-20 flex items-center justify-center px-3 py-1.5 bg-blue-300/30 text-sm text-white no-drag rotate-45 -translate-x-10 -translate-y-10 overflow-hidden cursor-pointer"
+          class="size-20 flex items-center justify-center px-3 py-1.5 bg-blue-300/30 text-sm no-drag rotate-45 -translate-x-10 -translate-y-10 overflow-hidden cursor-pointer"
         >
           <!-- {{ routerPath == 1 ? "微信" : "账号" }} -->
           <div class="-rotate-45 w-full h-full translate-x-10 mt-4 ml-4">
@@ -38,7 +38,7 @@ const switchingLoginMode = () => {
         </div>
       </div>
       <div
-        class="size-12 flex items-center justify-center cursor-pointer hover:text-white"
+        class="size-12 flex items-center justify-center cursor-pointer hover:text-black"
         @click="closeWindow"
       >
         <Icon name="X" />

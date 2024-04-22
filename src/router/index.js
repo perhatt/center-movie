@@ -18,7 +18,23 @@ const router = createRouter({
         {
           path: "/user",
           name: "user",
+          redirect: "/user/recent",
           component: () => import("@/views/user/Index.vue"),
+          children:[
+            {
+              path:'/user/recent',
+              name:'recent',
+              component:() => import("@/views/user/Recent.vue"),
+            },{
+              path:'/user/collect',
+              name:'collect',
+              component:() => import("@/views/user/Collect.vue"),
+            },{
+              path:'/user/order',
+              name:'order',
+              component:() => import("@/views/user/Order.vue"),
+            }
+          ]
         },
         {
           path: "/search",
@@ -43,9 +59,21 @@ const router = createRouter({
           name:"wechat",
           component:() => import("@/views/login/Wechat.vue"),
         },{
-          path:"/login/phone",
+          path:"/login/account",
           name:"phone",
-          component:() => import("@/views/login/Phone.vue"),
+          component:() => import("@/views/login/Account.vue"),
+          redirect:"/login/account/pwd",
+          children:[
+            {
+              path:"/login/account/pwd",
+              name:"pwd",
+              component:() => import("@/views/login/Pwd.vue"),
+            },{
+              path:"/login/account/code",
+              name:"email",
+              component:() => import("@/views/login/Code.vue"),
+            }
+          ]
         }
       ]
     }
